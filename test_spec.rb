@@ -24,6 +24,7 @@ describe "page class" do
 
       describe 'loading online friends' do
         before { subject.scroll_down_if_need }
+
         it 'must show all friends online' do
           count_online_friends = subject.find("#friends_summary").text.match(/\d+/)[0].to_i
           count_visible_online_friends = subject.all('.friends_field>a>b').count
