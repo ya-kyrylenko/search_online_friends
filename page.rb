@@ -12,7 +12,7 @@ class Page
     fill_in 'pass', with: password
     click_button 'Log in'
     raise "Authorization has been failed" unless has_link?('log out')
-    puts "Authorization is successful"
+    'Authorization is successful'
   end
 
   def go_to_online_friends
