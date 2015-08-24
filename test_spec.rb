@@ -34,7 +34,7 @@ describe "page class" do
       describe '#display_online_friends' do
         it 'should have correct names' do
           subject.all('.friends_field>a>b').each do |friend|
-            expect(friend.text).to match(/[A-Z]{1}[a-z']+\s{1}[A-Z]{1}[a-z']+/)
+            expect(friend.text).to match(/[A-Z][a-z']+\s[A-Z][a-z']+/)
           end
         end
       end
