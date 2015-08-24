@@ -2,6 +2,8 @@ require 'rspec'
 require './page.rb'
 
 describe "page class" do
+  let(:visible_online_friends) { subject.all('.friends_field>a>b') }
+
   subject { Page.new }
 
   it { expect(subject).to be_a Page }
@@ -26,15 +28,14 @@ describe "page class" do
         before { subject.scroll_down_if_need }
 
         it 'must show all friends online' do
-          count_online_friends = subject.find("#friends_summary").text.match(/\d+/)[0].to_i
-          count_visible_online_friends = subject.all('.friends_field>a>b').count
-          expect(count_online_friends).to eq(count_visible_online_friends)
+          count_online_friends = subject.find('.summary').text.match(/\d+/)[0].to_i
+          expect(count_online_friends).to eq(visible_online_friends.count)
         end
       end
 
       describe '#display_online_friends' do
         it 'should have correct names' do
-          subject.all('.friends_field>a>b').each do |friend|
+          visible_online_friends.each do |friend|
             expect(friend.text).to match(/[A-Z][a-z']+\s[A-Z][a-z']+/)
           end
         end

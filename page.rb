@@ -27,11 +27,11 @@ class Page
   end
 
   def display_online_friends
-    locator = '.friends_field>a>b'
-    puts "#{all(locator).count} friend(-s) online"
-    all(locator).each_with_index do |friend, index|
-      index += 1
-      puts "#{index.to_s}) #{friend.text}"
+    within('.main_panel') do
+      all(:xpath, "//div[1]/a/b").each_with_index do |friend, index|
+        index += 1
+        puts "#{index.to_s}) #{friend.text}"
+      end
     end
   end
 end
