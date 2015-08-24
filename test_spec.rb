@@ -17,6 +17,7 @@ describe "page class" do
     # to pass this tests fill login with valid data
     context 'success authorization' do
       it { expect(subject.login('email', 'password')).to eq('Authorization is successful') }
+      it { expect(subject).to have_link('My Friends') }
 
       describe '#go_to_online_friends' do
         before { subject.go_to_online_friends }
