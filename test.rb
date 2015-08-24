@@ -1,8 +1,9 @@
 require './page.rb'
 
-page = Page.new('example@example.com', 'password')
-page.login
+page = Page.new
+#fill login with valid data
+page.login('example@example.com', 'password')
 page.go_to_online_friends
-page.scroll_down
+page.scroll_down_if_need
 page.display_online_friends
-puts "Task finish"
+puts "Tasks have been completed"
