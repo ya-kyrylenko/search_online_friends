@@ -28,7 +28,7 @@ class Page
 
   def display_online_friends
     within('.main_panel') do
-      all(:xpath, "//div[1]/a/b").each_with_index do |friend, index|
+      all('.friends_bigph_wrap+.info a b').each_with_index do |friend, index|
         index += 1
         puts "#{index.to_s}) #{friend.text}"
       end
